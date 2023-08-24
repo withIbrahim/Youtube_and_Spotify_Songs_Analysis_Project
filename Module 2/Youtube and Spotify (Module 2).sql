@@ -1,4 +1,7 @@
-
+/*
+    In this module, we will be working on performing data analysis on the pre-processed data from the previous module and conducting Data Analysis using SQL.
+    We will generate queries for given problem statements. 
+*/
 
 
 
@@ -6,14 +9,14 @@
 1.Which is the most viewed song track on youtube?
 */
 
-SELECT
-    Track,
-    max(Views) as views
-FROM cleaned_dataset
-where most_playedon='Youtube'
-Group By Track
-Order by views desc
-limit 1
+    SELECT
+        Track,
+        max(Views) as views
+    FROM cleaned_dataset
+    where most_playedon='Youtube'
+    Group By Track
+    Order by views desc
+    limit 1
 
 
 /*
@@ -21,15 +24,15 @@ limit 1
 
 */
 
-
-SELECT
-    Track,
-    max(Stream) as stream
-FROM cleaned_dataset
-WHERE most_playedon = 'Spotify'
-GROUP BY Track
-Order BY stream desc
-limit 1
+    
+    SELECT
+        Track,
+        max(Stream) as stream
+    FROM cleaned_dataset
+    WHERE most_playedon = 'Spotify'
+    GROUP BY Track
+    Order BY stream desc
+    limit 1
 
 
 /*
@@ -38,14 +41,14 @@ limit 1
 
 */
 
-
-SELECT
-    Track,
-    max(EnergyLiveness) AS EnergyLiveness
-FROM cleaned_dataset
-GROUP BY Track
-ORDER BY EnergyLiveness DESC
-LIMIT 5
+    
+    SELECT
+        Track,
+        max(EnergyLiveness) AS EnergyLiveness
+    FROM cleaned_dataset
+    GROUP BY Track
+    ORDER BY EnergyLiveness DESC
+    LIMIT 5
 
 
 /*
@@ -56,14 +59,14 @@ To check this he assigns you this task and wants you to report to him where his 
 compare the platforms.
 
 */
-
-SELECT
-most_playedon,
-count(Track)
-
-FROM cleaned_dataset
-WHERE Artist ='Black Eyed Peas'
-GROUP BY most_playedon
+    
+    SELECT
+    most_playedon,
+    count(Track)
+    
+    FROM cleaned_dataset
+    WHERE Artist ='Black Eyed Peas'
+    GROUP BY most_playedon
 
 
 /*
@@ -72,13 +75,14 @@ GROUP BY most_playedon
 
 */
 
-SELECT
-    Track,
-    max(Likes),
-    Energy,
-    Tempo
-FROM cleaned_dataset
-WHERE Artist = 'Gorillaz'
+    SELECT
+        Track,
+        max(Likes),
+        Energy,
+        Tempo
+    FROM cleaned_dataset
+    WHERE 
+        Artist = 'Gorillaz'
 
 
 /*
@@ -86,25 +90,25 @@ WHERE Artist = 'Gorillaz'
 6. Which Album types are more prominent on Spotify?
 */
 
-SELECT
-    Album_type,
-    COUNT(Album_type)
-FROM cleaned_dataset
-GROUP BY Album_type
+    SELECT
+        Album_type,
+        COUNT(Album_type)
+    FROM cleaned_dataset
+    GROUP BY Album_type
 
 
 /*
 7. Spotify's most loved song tracks are to be declared soon. Help Spotify choose the top 5 most streamed+youtube viewed song track.
 */
 
-SELECT
-    Track,
-    Views+Stream as total
-FROM cleaned_dataset
-GROUP BY Track
-ORDER BY total desc
-LIMIT 5
-
+    SELECT
+        Track,
+        Views+Stream as total
+    FROM cleaned_dataset
+    GROUP BY Track
+    ORDER BY total desc
+    LIMIT 5
+    
 
 
 
